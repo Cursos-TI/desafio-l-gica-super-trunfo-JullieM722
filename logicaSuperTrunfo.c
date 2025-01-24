@@ -10,7 +10,7 @@ int main() {
     //variaveis para preenchimentos das cartas, com vetor para que possem ser armazenados 2 valores diferentes usando a mesma variavel
     char pais[2][50];
     char estado[2][50];
-    char cod_cidade[2][4];
+    char cod_cidade[2][5];
     char nome[2][50];
     unsigned int pop[2]; //população
     float area[2];
@@ -29,41 +29,44 @@ int main() {
     printf("1 - Iniciar o jogo \n");
     printf("2 - Regras \n");
     printf("3 - Sair \n");
-    scanf("%d \n", &escolha);
+    scanf("%d", &escolha);
 
     switch (escolha) {
         case 1: //Iniciando o jogo 
             // Cadastro das Cartas:
-            printf("REGISTRO DE CARTAS PARA O JOGO SUPER TRUNFO \n \n");
+            printf("\n\n\n############################### VAMOS JOGAR?? ############################### \n\n");
+
+            printf("\n \n --------------- REGISTRO DAS CARTAS --------------- \n \n");
 
             //a estrutura de repetição for vai rodar 2 vezes e armazenar o dados inseridos nos vetores.
             for (int i = 0; i < 2; i++) {
-                printf("Qual o país da %dº carta?\n", i);
+                printf("--------------- Insira os dados da %dº carta --------------- \n \n", i + 1);
+                printf("Qual o país da %dº carta?\n", i + 1);
                 scanf("%s", &pais[i]);
 
-                printf("Qual estado deste pais e referente a %dº carta?\n", i);
+                printf("\nQual estado deste pais e referente a %dº carta?\n", i + 1);
                 scanf("%s", &estado[i], "\n \n");
 
-                printf("Insira o código da cidade da %dº carta?\n", i);
+                printf("\nInsira o código da cidade da %dº carta?\n", i + 1);
                 printf("Obs: Lembrando que o código em questão, deve conter:\n");
                 printf("- a letra referente ao estado, sendo elas de A-H \n");
                 printf("- e o número referente a cidade, sendo eles de 001-004 \n");
                 printf("EX: A001, B002, C003 \n");
                 scanf("%s", &cod_cidade[i]);
 
-                printf("Qual a cidade da %dº carta?\n", i);
+                printf("\nQual a cidade da %dº carta?\n", i + 1);
                 scanf("%s", &nome[i]);
 
-                printf("Qual o numero de habitantes da cidade em questão?\n");
+                printf("\nQual o numero de habitantes da cidade em questão?\n");
                 scanf("%u", &pop[i]);
 
-                printf("Qual a área da cidade?\n");
+                printf("\nQual a área da cidade?\n");
                 scanf("%f", &area[i]);
 
-                printf("Qual o valor do PIB desta cidade?\n");
+                printf("\nQual o valor do PIB desta cidade?\n");
                 scanf("%f", &pib[i]);
 
-                printf("A cidade em questão tem quantos pontos turisticos?\n");
+                printf("\nA cidade em questão tem quantos pontos turisticos?\n");
                 scanf("%u", &p_tur[i]);
 
                 //calcula o super densidade pop., PIB per capita e poder
@@ -83,113 +86,113 @@ int main() {
             switch (pc){
                 case 1: //Compara população
                     if (pop[0] > pop[1]) { //População da primeira carta inserida é maior
-                        printf("*** COMPARANDO POPULAÇÃO *** \n");
-                        printf("%s - %u > %s - %u \n", cod_cidade[0],pop[0],cod_cidade[1], pop[1]);
-                        printf("A carta %s venceu \n",cod_cidade[0]);
+                        printf("*** COMPARANDO POPULAÇÃO *** \n\n");
+                        printf("%s - %u > %s - %u \n", cod_cidade[0], pop[0], cod_cidade[1], pop[1]);
+                        printf("A carta %s venceu \n\n", cod_cidade[0]);
                     } else if (pop[0] == pop[1]){ //População das cartas empataram
-                        printf("*** COMPARANDO POPULAÇÃO *** \n");
-                        printf("%s - %u = %s - %u \n", cod_cidade[0],pop[0],cod_cidade[1], pop[1]);
-                        printf("As cartas empataram \n");
+                        printf("*** COMPARANDO POPULAÇÃO *** \n\n");
+                        printf("%s - %u = %s - %u \n", cod_cidade[0], pop[0], cod_cidade[1], pop[1]);
+                        printf("As cartas empataram \n\n");
                     } else{ // População da segunda carta é maior
-                        printf("*** COMPARANDO POPULAÇÃO *** \n");
-                        printf("%s - %u > %s - %u \n", cod_cidade[1],pop[1],cod_cidade[0], pop[0]);
-                        printf("A carta %s venceu \n",cod_cidade[1]);
+                        printf("*** COMPARANDO POPULAÇÃO *** \n\n");
+                        printf("%s - %u > %s - %u \n", cod_cidade[1], pop[1], cod_cidade[0], pop[0]);
+                        printf("A carta %s venceu \n\n", cod_cidade[1]);
                     }
                     break;
                 
                 case 2: //Compara área
                     if (area[0] > area[1]) { //Área primeira carta inserida é maior
-                        printf("*** COMPARANDO ÁREA *** \n");
-                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[0],area[0],cod_cidade[1], area[1]);
-                        printf("A carta %s venceu \n",cod_cidade[0]);
+                        printf("*** COMPARANDO ÁREA *** \n\n");
+                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[0], area[0], cod_cidade[1], area[1]);
+                        printf("A carta %s venceu \n\n", cod_cidade[0]);
                     } else if (area[0] == area[1]){ //Área das cartas empataram
-                        printf("*** COMPARANDO ÁREA *** \n");
-                        printf("%s - %.2f = %s - %.2f \n", cod_cidade[0],area[0],cod_cidade[1], area[1]);
-                        printf("As cartas empataram \n");
+                        printf("*** COMPARANDO ÁREA *** \n\n");
+                        printf("%s - %.2f = %s - %.2f \n", cod_cidade[0], area[0], cod_cidade[1], area[1]);
+                        printf("As cartas empataram \n\n");
                     } else{
-                        printf("*** COMPARANDO ÁREA *** \n"); //Área da segunda carta inserida é maior
-                        printf("%s = %.2f > %s = %.2f \n", cod_cidade[1],area[1],cod_cidade[0], area[0]);
-                        printf("A carta %s venceu \n",cod_cidade[1]);
+                        printf("*** COMPARANDO ÁREA *** \n\n"); //Área da segunda carta inserida é maior
+                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[1], area[1], cod_cidade[0], area[0]);
+                        printf("A carta %s venceu \n\n", cod_cidade[1]);
                     }
                     break;
 
                 case 3: //Compara PIB
                     if (pib[0] > pib[1]) { //PIB da primeira carta inserida é maior
-                        printf("*** COMPARANDO PIB*** \n");
-                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[0],pib[0],cod_cidade[1], pib[1]);
-                        printf("A carta %s venceu \n",cod_cidade[0]);
+                        printf("*** COMPARANDO PIB*** \n\n");
+                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[0], pib[0], cod_cidade[1], pib[1]);
+                        printf("A carta %s venceu \n\n", cod_cidade[0]);
                     } else if (pib[0] == pib[1]){ //PIB das cartas empataram
-                        printf("*** COMPARANDO PIB*** \n");
-                        printf("%s - %.2f = %s - %.2f \n", cod_cidade[0],pib[0],cod_cidade[1], pib[1]);
-                        printf("As cartas empataram \n");
+                        printf("*** COMPARANDO PIB*** \n\n");
+                        printf("%s - %.2f = %s - %.2f \n", cod_cidade[0], pib[0], cod_cidade[1], pib[1]);
+                        printf("As cartas empataram \n\n");
                     } else{ //PIB da segunda carta inserida é maior
-                        printf("*** COMPARANDO PIB*** \n");
-                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[1],pib[1],cod_cidade[0], pib[0]);
-                        printf("A carta %s venceu \n",cod_cidade[1]);
+                        printf("*** COMPARANDO PIB*** \n\n");
+                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[1], pib[1], cod_cidade[0], pib[0]);
+                        printf("A carta %s venceu \n\n", cod_cidade[1]);
                     }
                     break;
                 
                 case 4: //Compara ponto turistico
                     if (p_tur[0] > p_tur[1]) { //Ponto turistico da primeira carta inserida é maior
-                        printf("*** COMPARANDO PONTO TURISTICO *** \n");
-                        printf("%s - %u > %s - %u \n", cod_cidade[0],p_tur[0],cod_cidade[1], p_tur[1]);
-                        printf("A carta %s venceu \n",cod_cidade[0]);
+                        printf("*** COMPARANDO PONTO TURISTICO *** \n\n");
+                        printf("%s - %u > %s - %u \n", cod_cidade[0], p_tur[0], cod_cidade[1], p_tur[1]);
+                        printf("A carta %s venceu \n\n", cod_cidade[0]);
                     } else if (p_tur[0] == p_tur[1]){ //Ponto turistico das cartas empataram
-                        printf("*** COMPARANDO PONTO TURISTICO *** \n");
-                        printf("%s - %u = %s - %u \n", cod_cidade[0],p_tur[0],cod_cidade[1], p_tur[1]);
-                        printf("As cartas empataram \n");
+                        printf("*** COMPARANDO PONTO TURISTICO *** \n\n");
+                        printf("%s - %u = %s - %u \n", cod_cidade[0], p_tur[0], cod_cidade[1], p_tur[1]);
+                        printf("As cartas empataram \n\n");
                     } else{ //Ponto turistico da segunda carta inserida é maior
-                        printf("*** COMPARANDO PONTO TURISTICO *** \n");
-                        printf("%s - %u > %s - %u \n", cod_cidade[1],p_tur[1],cod_cidade[0], p_tur[0]);
-                        printf("A carta %s venceu \n",cod_cidade[1]);
+                        printf("*** COMPARANDO PONTO TURISTICO *** \n\n");
+                        printf("%s - %u > %s - %u \n", cod_cidade[1], p_tur[1], cod_cidade[0], p_tur[0]);
+                        printf("A carta %s venceu \n\n", cod_cidade[1]);
                     }
                     break;
 
                 case 5: //Compara densidade populacional
                     if (dens_pop[0] < dens_pop[1]) { //Densidade populacional da primeira carta é menor
-                        printf("*** COMPARANDO DENSIDADE POPULACIONAL *** \n");
-                        printf("%s - %.2f < %s - %.2f \n", cod_cidade[0],dens_pop[0],cod_cidade[1], dens_pop[1]);
-                        printf("A carta %s venceu \n",cod_cidade[0]);
+                        printf("*** COMPARANDO DENSIDADE POPULACIONAL *** \n\n");
+                        printf("%s - %.2f < %s - %.2f \n", cod_cidade[0], dens_pop[0], cod_cidade[1], dens_pop[1]);
+                        printf("A carta %s venceu \n\n", cod_cidade[0]);
                     } else if (dens_pop[0] == dens_pop[1]){ //Densidade populacional das cartas empataram
-                        printf("*** COMPARANDO DENSIDADE POPULACIONAL *** \n");
-                        printf("%s - %.2f = %s - %.2f \n", cod_cidade[0],dens_pop[0],cod_cidade[1], dens_pop[1]);
-                        printf("As cartas empataram \n");
+                        printf("*** COMPARANDO DENSIDADE POPULACIONAL *** \n\n");
+                        printf("%s - %.2f = %s - %.2f \n", cod_cidade[0], dens_pop[0], cod_cidade[1], dens_pop[1]);
+                        printf("As cartas empataram \n\n");
                     } else{ //Densidade populacional da segunda carta inserida é menor
-                        printf("*** COMPARANDO DENSIDADE POPULACIONAL *** \n");
-                        printf("%s - %.2f < %s - %.2f \n", cod_cidade[1],dens_pop[1],cod_cidade[0], dens_pop[0]);
-                        printf("A carta %s venceu \n",cod_cidade[1]);
+                        printf("*** COMPARANDO DENSIDADE POPULACIONAL *** \n\n");
+                        printf("%s - %.2f < %s - %.2f \n", cod_cidade[1], dens_pop[1], cod_cidade[0], dens_pop[0]);
+                        printf("A carta %s venceu \n\n", cod_cidade[1]);
                     }
                     break;
 
                 case 6: //Compara PIB per capita
                     if (per_cap[0] > per_cap[1]) { //PIB per capita da primeira carta é maior
-                        printf("*** COMPARANDO PIB PER CAPITA *** \n");
-                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[0],per_cap[0],cod_cidade[1], per_cap[1]);
-                        printf("A carta %s venceu \n",cod_cidade[0]);
+                        printf("*** COMPARANDO PIB PER CAPITA *** \n\n");
+                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[0], per_cap[0], cod_cidade[1], per_cap[1]);
+                        printf("A carta %s venceu \n\n", cod_cidade[0]);
                     } else if (per_cap[0] == per_cap[1]){ //PIB per capita das cartas empataram
-                        printf("*** COMPARANDO PIB PER CAPITA *** \n");
-                        printf("%s - %.2f = %s - %.2f \n", cod_cidade[0],per_cap[0],cod_cidade[1], per_cap[1]);
-                        printf("As cartas empataram \n");
+                        printf("*** COMPARANDO PIB PER CAPITA *** \n\n");
+                        printf("%s - %.2f = %s - %.2f \n", cod_cidade[0], per_cap[0], cod_cidade[1], per_cap[1]);
+                        printf("As cartas empataram \n\n");
                     } else{ //PIB per capita da segunda carta inserida é maior
-                        printf("*** COMPARANDO PIB PER CAPITA *** \n");
-                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[1],per_cap[1],cod_cidade[0], per_cap[0]);
-                        printf("A carta %s venceu \n",cod_cidade[1]);
+                        printf("*** COMPARANDO PIB PER CAPITA *** \n\n");
+                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[1], per_cap[1], cod_cidade[0], per_cap[0]);
+                        printf("A carta %s venceu \n\n", cod_cidade[1]);
                     }
                     break;
 
                 case 7: //Compara super poder
                     if (poder[0] > poder[1]) { //Super poder da primeira carta inserida é maior
-                        printf("*** COMPARA SUPER PODER *** \n");
-                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[0],poder[0],cod_cidade[1], poder[1]);
-                        printf("A carta %s venceu \n",cod_cidade[0]);
+                        printf("*** COMPARA SUPER PODER *** \n\n");
+                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[0], poder[0], cod_cidade[1], poder[1]);
+                        printf("A carta %s venceu \n\n", cod_cidade[0]);
                     } else if (per_cap[0] == per_cap[1]){ //Super poder das cartas empataram
-                        printf("*** COMPARA SUPER PODER *** \n");
-                        printf("%s - %.2f = %s - %.2f \n", cod_cidade[0],poder[0],cod_cidade[1], poder[1]);
-                        printf("As cartas empataram \n");
+                        printf("*** COMPARA SUPER PODER *** \n\n");
+                        printf("%s - %.2f = %s - %.2f \n", cod_cidade[0], poder[0], cod_cidade[1], poder[1]);
+                        printf("As cartas empataram \n\n");
                     } else{ //Super poder da segunda carta é maior
-                        printf("*** COMPARA SUPER PODER *** \n");
-                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[1],poder[1],cod_cidade[0], poder[0]);
-                        printf("A carta %s venceu \n",cod_cidade[1]);
+                        printf("*** COMPARA SUPER PODER *** \n\n");
+                        printf("%s - %.2f > %s - %.2f \n", cod_cidade[1], poder[1], cod_cidade[0], poder[0]);
+                        printf("A carta %s venceu \n\n", cod_cidade[1]);
                     }
                     break;
 
@@ -200,18 +203,19 @@ int main() {
             break;
         
         case 2:
-            printf("*** REGRAS: ***\n");
+            printf("--------------- REGRAS: --------------- \n\n");
             printf("1- Cadastre a carta com base nas propriedades pedidas; \n");
             printf("2- Após o cadastro, será escolhida de forma aleatoria qual prorpiedade será comparada; \n");
-            printf("3- a carta com o valor da propriedade maior vence, exceto pela densidade populacional, que vence o menor valor.");
+            printf("3- a carta com o valor da propriedade maior vence, exceto pela densidade populacional, que vence o menor valor.\n \n");
             break;
         
         case 3:
-            printf("*** SAINDO... ***");
+            printf("--------------- SAINDO... --------------- \n \n");
             break;
         
         default:
-            printf("*** ESCOLHA INVÁLIDA ***");
+            printf("--------------- ESCOLHA INVÁLIDA --------------- \n\n");
             break;
     }
+    return 0;
 }
