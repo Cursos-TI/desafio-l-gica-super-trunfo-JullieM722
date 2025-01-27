@@ -25,6 +25,7 @@ int main() {
     int escolha; //Escolha do menu interativo
     int vencedor[2] = {0, 0};
 
+    //Menu interativo para o usuário decidir o que quer fazer.
     printf("--------------- MENU INTERATIVO --------------- \n \n");
     printf("O que gostaria de fazer? \n");
     printf("1 - Iniciar o jogo \n");
@@ -70,9 +71,9 @@ int main() {
                 printf("\nA cidade em questão tem quantos pontos turisticos?\n");
                 scanf("%u", &p_tur[i]);
 
-                //calcula o super densidade pop., PIB per capita e poder
-                dens_pop[i]= pop[i] / area[i];
-                per_cap[i]= pib[i] / pop[i];
+                //calcula a densidade populacional, PIB per capita e super poder
+                dens_pop[i] = pop[i] / area[i];
+                per_cap[i] = pib[i] / pop[i];
                 poder[i] = pop[i] + area[i] + pib[i] + p_tur[i] + dens_pop[i] + per_cap[i];
             }
 
@@ -83,29 +84,33 @@ int main() {
             
             srand(time(0)); //gerador de numeros aleatorios
             int pc[2];
-            pc[0]= rand() % 7 + 1; //Aqui ficara armazenada a escolha do computador em relação as prorpiedades
+            pc[0]= rand() % 7 + 1; //Aqui ficara armazenada a escolha do computador em relação as propriedades
 
-            //criação da segunda prorpiedade aleatoria, usando o do-while para ganrantir que seja diferente do pc[0]
+            //criação da segunda propriedade aleatoria, usando o do-while para ganrantir que seja diferente do pc[0]
             do {
                 pc[1] = rand() % 7 + 1;
             } while (pc[1] == pc[0]);
 
+            //a estrutura de repetição for vai rodar 2 vezes para apresentar no terminal o resultado das comparações das propriedades.
             for (int i = 0; i < 2; i++){
                 printf("--------------- %dº PROPRIEDADE --------------- \n\n", i + 1);
 
+                //Switch para receber o valor aleatorio escolhido pelo pc e comparar a propriedade certa
                 switch (pc[i]){
                     case 1: //Compara população
 
                         printf("*** COMPARANDO POPULAÇÃO *** \n\n");
 
-                        if (pop[0] == pop[1])
+                        if (pop[0] == pop[1]) //Compara se os valores inserido nas variaveis sao iguais resultando em empate das cartas
                             printf("As cartas empataram!! \n\n");
                         else{
-                            int maior = (pop[0] > pop[1]) ? pop[0] : pop[1];
-                            printf("A maior população é: %d !\n\n", maior);
-                            if(maior == pop[0])
+                            int maior = (pop[0] > pop[1]) ? pop[0] : pop[1]; //Uso de função ternária para definir qual das duas cartas e a vencedora
+                            printf("A maior população é: %d !\n\n", maior);//Printf da carta vencedora
+
+                            //Armazena em uma variavel qual a carta vencedora com base em pontos.
+                            if(maior == pop[0]) //Aqui é conferido se a variavel armazenada pela função ternaria e primeira carta.
                                 vencedor[0]++;
-                            else
+                            else //Se não for, entao o ponto é inserido para a segunda carta
                                 vencedor[1]++;
                         }
                         break;
@@ -211,30 +216,31 @@ int main() {
                 }
             }
 
-            if (vencedor[0] > vencedor[1]) {
+            //Comparando os pontos para definir a carta vencedora
+            if (vencedor[0] > vencedor[1]) { //Se a primeira carta é a vencedora
                 printf("A carta vencedora é: %s !!\n", cod_cidade[0]);
                 printf("Primeira carta inserida\n\n");
-            } else if (vencedor[1] > vencedor[0]) {
+            } else if (vencedor[1] > vencedor[0]) { //se nao-se a segunda carta for vencedora
                 printf("A carta vencedora é: %s !! \n", cod_cidade[1]);
                 printf("Segunda carta inserida \n\n");
-            } else{
+            } else{ //Se nao há vencedor as cartas empataram.
                 printf("Não houve vencedor!\n");
                 printf("As cartas empataram\n\n");
             }
             break;
         
-        case 2:
+        case 2: //Informa as regras do jogo
             printf("--------------- REGRAS: --------------- \n\n");
             printf("1- Cadastre a carta com base nas propriedades pedidas; \n");
             printf("2- Após o cadastro, será escolhida de forma aleatoria quais propriedades serão comparadas; \n");
             printf("3- A carta que tiver ganhado mais vezes nas comparações da propriedade é a vencedora.\n \n");
             break;
         
-        case 3:
+        case 3: // Saindo do programa
             printf("--------------- SAINDO... --------------- \n \n");
             break;
         
-        default:
+        default: //Caso seja inserido um valor diferente de 1 a 3, resultando em erro
             printf("--------------- ESCOLHA INVÁLIDA --------------- \n\n");
             break;
     }
